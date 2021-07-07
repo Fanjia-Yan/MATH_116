@@ -6,6 +6,7 @@ public class GCDTest {
     GCD gcd = new GCD(5,10);
     GCD gcd1 = new GCD(12,16);
     GCD gcd2 = new GCD(5,37);
+    GCD gcd3 = new GCD(5,7);
 
     @Test
     public void dumbGCDtest(){
@@ -21,4 +22,10 @@ public class GCDTest {
         assertEquals(1,gcd2.euclideanGCD());
     }
 
+    @Test
+    public void EGCDtest(){
+        assertEquals(1,gcd3.extendedEuclideanGCD()[0]);
+        assertEquals(3,gcd3.extendedEuclideanGCD()[1]);
+        assertEquals(-2, gcd3.extendedEuclideanGCD()[2]);
+    }
 }
