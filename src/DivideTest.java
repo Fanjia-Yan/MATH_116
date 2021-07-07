@@ -24,6 +24,7 @@ public class DivideTest {
 
     @Test
     public void CommondivsorTest(){
-        System.out.print(d3.commondivisor());
+        System.out.println(d3.commondivisor());
+        System.out.println(d3.greatestcommondivisor());
     }
 }

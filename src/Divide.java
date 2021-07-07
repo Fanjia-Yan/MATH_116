@@ -64,6 +64,11 @@ public class Divide {
         return cd;
     }
 
+    /** dumb method return gcd **/
+    int greatestcommondivisor(){
+        return (int) this.commondivisor().get(this.commondivisor().size() - 1);
+    }
+
     /** return a list of divisor **/
     private static ArrayList divisor(int x){
         ArrayList divisor = new ArrayList<Integer>();
