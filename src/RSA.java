@@ -9,28 +9,28 @@ public class RSA {
         }
         return result % mod;
     }
-    static int fast_exponentiation(int a,int b,int c) {
-        long x=1;
-        long y=a;
-        while(b > 0){
-            if(b%2 == 1){
-                x=(x*y)%c;
-            }
-            y = (y%c * y%c)%c; // squaring the base
-            b /= 2;
+
+    /** convert words to binary 8 digit bytes **/
+    public static String word_to_byte(String word){
+        String byte_sequence = "";
+        for (int i = 0; i < word.length(); i = i + 1){
+            int ascii = word.charAt(i);
+            String asciiCode = Integer.toBinaryString(ascii);
+            while (asciiCode.length() != 8) asciiCode = '0' + asciiCode;
+            byte_sequence += asciiCode;
         }
-        return (int) x%c;
+        return byte_sequence;
     }
-    public static void main(String[] args){
-        long fast_1 = System.nanoTime();
-        int x =fast_powering(1234112356,123456789,1203);
-        long fast_2 = System.nanoTime();
-        System.out.println(fast_2- fast_1);
-        System.out.println(x);
-        long slow_1 = System.nanoTime();
-        int y = fast_exponentiation(1234112356,123456789,1203);
-        long slow_2 = System.nanoTime();
-        System.out.println(slow_2- slow_1 );
-        System.out.println(y);
+
+    /** convert 8 digit bytes string back to word **/
+    public static String byte_to_word(String byte_sequence){
+        if (byte_sequence.length() % 8 != 0) return null;
+        String word = "";
+        char[] temp = new char[8];
+        for(int i = 0; i < byte_sequence.length();i = i + 8){
+            byte_sequence.getChars(i,i+8,temp,0);
+            word += (char)Integer.parseInt(String.valueOf(temp),2);
+        }
+        return word;
     }
 }
